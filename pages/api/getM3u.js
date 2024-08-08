@@ -7,8 +7,6 @@ const hexToBase64 = (hex) => {
         const bytes = Buffer.from(hex, 'hex');
         let base64 = bytes.toString('base64');
         
-        base64 = base64.replace(/\+/g, '-').replace(/\//g, '_');
-        
         base64 = base64.replace(/=*$/, '');
         console.log(`Hex to Base64 conversion: ${hex} -> ${base64}`);
         return base64;
@@ -94,16 +92,11 @@ const fetchHmacData = async () => {
     try {
         console.log('Fetching HMAC data...');
         const data = await fetchData('https://fox.toxic-gang.xyz/tata/hmac');
-        
-        if (data && Array.isArray(data) && data.length > 0) {
-            const hmacData = data[0]?.data || {};
-            const hmacValue = hmacData.hdntl || null;
+            const hmacData = data;
+            const hmacValue = hmacData.data.hdntl || null;
             console.log(`HMAC data fetched successfully. HMAC Value: ${hmacValue}`);
             return hmacValue;
-        } else {
-            console.error('No HMAC data found in the response.');
-            return null;
-        }
+
     } catch (error) {
         console.error('Error fetching HMAC data:', error.message);
         return null;
