@@ -33,7 +33,7 @@ const fetchData = async (url) => {
 const fetchChannelData = async () => {
     try {
         console.log('Fetching channel data...');
-        const response = await fetchData("https://fox.toxic-gang.xyz/tata/channels");
+        const response = await fetchData("https://babel-in.xyz/babel-3305a8808263cb8044f7327b9c1b8e82/tata/channels");
 
         
         const channels = response?.data || [];
@@ -91,7 +91,7 @@ const fetchChannelData = async () => {
 const fetchHmacData = async () => {
     try {
         console.log('Fetching HMAC data...');
-        const data = await fetchData('https://fox.toxic-gang.xyz/tata/hmac');
+        const data = await fetchData('https://babel-in.xyz/babel-3305a8808263cb8044f7327b9c1b8e82/tata/hmac');
             const hmacData = data;
             const hmacValue = hmacData.data.hdntl || null;
             console.log(`HMAC data fetched successfully. HMAC Value: ${hmacValue}`);
